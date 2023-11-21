@@ -1,0 +1,42 @@
+Crie um arquivo chamado provisionamento_apache.sh com o seguinte conteúdo:
+
+bash
+Copy code
+#!/bin/bash
+
+# Atualizar lista de pacotes
+sudo apt-get update
+
+# Instalar o Apache
+sudo apt-get install -y apache2
+
+# Habilitar o serviço do Apache
+sudo systemctl enable apache2
+
+# Iniciar o serviço do Apache
+sudo systemctl start apache2
+
+# Configuração de firewall (caso necessário, ajuste conforme a sua política de segurança)
+sudo ufw allow 'Apache'
+
+# Mostrar status do Apache
+sudo systemctl status apache2
+Este script realiza os seguintes passos:
+
+Atualiza a lista de pacotes do sistema.
+Instala o servidor web Apache (apache2).
+Habilita o serviço do Apache para iniciar automaticamente no boot.
+Inicia o serviço do Apache.
+Configura a regra do firewall para permitir o tráfego HTTP (porta 80).
+Exibe o status atual do serviço Apache.
+Após criar o script, conceda permissão de execução:
+
+bash
+Copy code
+chmod +x provisionamento_apache.sh
+Execute o script como sudo/root:
+
+bash
+Copy code
+sudo ./provisionamento_apache.sh
+Este é um exemplo básico de como você pode automatizar a instalação e configuração do servidor web Apache. É importante entender que, em um ambiente de produção, outros fatores como segurança, configuração do virtual host, certificados SSL/TLS, configurações específicas do Apache, entre outros, podem ser necessários e devem ser considerados.
