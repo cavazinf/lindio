@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Array de nomes de usuários
+nomes_usuarios=("usuario1" "usuario2" "usuario3")
+
+# Loop para criar usuários, diretórios e definir permissões
+for nome_usuario in "${nomes_usuarios[@]}"
+do
+    # Criar usuário
+    sudo useradd -m "$nome_usuario" -s /bin/bash
+    
+    # Definir uma senha para o usuário (opcional)
+    # sudo passwd "$nome_usuario"
+
+    # Criar diretório para o usuário
+    sudo mkdir -p /home/"$nome_usuario"/meu_diretorio
+
+    # Definir permissões para o diretório
+    sudo chown -R "$nome_usuario":"$nome_usuario" /home/"$nome_usuario"/meu_diretorio
+    sudo chmod 700 /home/"$nome_usuario"/meu_diretorio
+done
